@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/*Con el root declaramos variables comoo se visuliza a continuacion*/
+:root {
+  --color-primario: #000000;
+  --color-secuendario: #f6f6f6;
+  --color-terciario: #22d4fd;
+  --color-hover: #272727;
+
+  --fuente-mostserrat: "Montserrat", sans-serif;
+  --fuente-Krona: "Krona One", sans-serif;
+}
+* {
+  padding: 0;
+  margin: 0;
+  /*Al resetear estos estilos, te aseguras de que todos los elementos de tu página web comiencen
+     con un estilo limpio y consistente, sin importar el navegador que se use.*/
+}
+body {
+  /*Asi se utiliza una variable (var(variable))*/
+
+  background-color: var(--color-primario);
+  color: var(--color-secuendario);
+  /* height: 100vh;  Se utiliza para que la pagina ocupe el 100 de la altura */
+  box-sizing: border-box;
+}
+
+.header {
+  padding: 2% 0% 0% 15%;
+}
+
+.header_menu {
+  display: flex;
+  gap: 80px;
+}
+
+.header_menu_link {
+  font-family: var(--fuente-mostserrat);
+  font-size: 1.5rem; /*Para determinar los rem hay que dividir los prixeles a utilizar en 16*/
+  font-weight: 600;
+  color: var(--color-terciario);
+  text-decoration: none;
+}
+/* Uso de clases  */
+.titulo-destaque {
+  color: var(--color-terciario);
+}
+
+.presentacion {
+  /*https://css-tricks.com/snippets/css/a-guide-to-flexbox/ este link tiene la documentacion para el control flexible de los elementos */
+  display: flex; /*convierte un elemento en un contenedor flexible*/
+  align-items: center; /*alinea los elementos hijos verticalmente al centro.*/
+  padding: 5% 15%; /*El primer valor es vertical y el segundo horizontal*/
+  justify-content: space-between;
+}
+
+.presentacion_contenido {
+  width: 50%;
+  display: flex;
+  flex-direction: column; /* cambia la forma en que los elementos dentro de un contenedor Flexbox se organizan. En lugar de estar uno al lado del otro (como una fila), se apilan uno encima del otro (como una columna).*/
+  gap: 40px; /*Es como un espacio mágico que se crea entre los elementos dentro de un contenedor Flexbox.*/
+}
+.presentacion_contenido_titulo {
+  font-size: 2rem;
+  font-family: var(--fuente-Krona);
+}
+
+.presentacion_contenido_parrafo {
+  font-size: 1.5rem;
+  font-family: var(--fuente-mostserrat);
+}
+
+.presentacion_enlaces {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column; /*Con esta linea de codigo selecionamos la direccion de nuestros elementos (vertical(column u horizontal (row, por defecto) )*/
+  align-items: center; /*Centrar botones al centro */
+  gap: 32px;
+}
+
+.presentacion_enlaces_subtitulo {
+  font-family: var(--fuente-Krona);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.presentacion_enlaces_link {
+  width: 50%;
+  /*background-color: #22d4fd;*/
+  text-align: center;
+  padding: 21.5px 0; /* El padding es el espacio entre el borde de un elemento y su contenido (el primer valor es el vertical y el segundo es horizontal*/
+  border-radius: 8px;
+  font-family: var(--fuente-mostserrat);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-secuendario);
+  border: 2px solid var(--color-terciario); /*el primero es tamaño del borde,el segundo es el estilo y el tercero es el color*/
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+/*La propiedad justify-content controla la posición de los elementos hijos a lo largo del eje principal y 
+también ayuda a distribuir el espacio libre entre ellos. Con el valor space-evenly, los elementos se 
+distribuyen con espacios iguales entre sí y hasta los bordes. Como solo tenemos 2 elementos, quedarán centrados.*/
+
+.presentacion_enlaces_link:hover {
+  background-color: var(--color-hover);
+}
+
+.footer {
+  background-color: var(--color-terciario);
+  padding: 24px;
+  color: var(--color-primario);
+  text-align: center;
+  font-family: var(--fuente-mostserrat);
+  font-size: 1.5rm;
+  font-weight: 400;
+}
+
+.presentacion_imagen {
+  width: 50%;
+}
+
+/*Esta es la seccion en donde utilizamos la propiedad de media queries,
+permite aplicar estilos específicos a tu página web dependiendo del tamaño
+de la pantalla del dispositivo que la está viendo. Es como tener un "traje a medida" para cada tamaño de pantalla.*/
+
+@media (max-width: 1200px) {
+  .header {
+    padding: 10%;
+  }
+  .header_menu {
+    /*Si los estilos dektop tiene por ejemplo un display flex o algoasi no
+  se necesita agragar en esta version*/
+    justify-content: center;
+  }
+  .presentacion {
+    flex-direction: column-reverse;
+    padding: 5%;
+  }
+    
+  .presentacion_contenido{
+    width: auto; /*La diferencia entre  100% y el width auto es que el auto se va a adaptar siempre 
+    al elemeto padre en cambio el width siempre va a ser el 100% si se coloca así*/  
+  }
+}
